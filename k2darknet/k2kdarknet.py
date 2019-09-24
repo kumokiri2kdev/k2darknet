@@ -6,8 +6,8 @@ class Detector():
         self.net = dn.load_net(b'cfg/yolov3.cfg', b'yolov3.weights', 0)
         self.meta = dn.load_meta(b'cfg/coco.data')
 
-    def detect(self, filename):
-        r = dn.detect(self.net, self.meta, filename.encode())
+    def detect(self, filename, thresh=0.5):
+        r = dn.detect(self.net, self.meta, filename.encode(), thresh=thresh)
 
         results = []
         for entry in r:
